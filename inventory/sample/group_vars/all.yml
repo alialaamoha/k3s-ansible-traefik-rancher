@@ -94,11 +94,12 @@ proxmox_lxc_configure: false
 proxmox_lxc_ssh_user: root
 # the unique proxmox ids for all of the containers in the cluster, both worker and master nodes
 proxmox_lxc_ct_ids:
-  - 200
-  - 201
-  - 202
-  - 203
-  - 204
+  - 301
+  - 302
+  - 303
+  - 310
+  - 311
+  - 312
 
 
 #deploy traefik? this deploys both an internal (default ingress) and external instance of traefik, external = traefik-external ingressClass
@@ -107,12 +108,12 @@ deploy_traefik: true
 #first IP from above metalLB range which will be used by traefik
 #--IMPORTANT-- This IP NEEDS to be contained in the above pool provided to metalLB.  Usually I use the first one in that range
 # internal and external param respectively - port forward from your firewall to the external instance
-traefik_int_endpoint_ip: "192.168.10.40"
-traefik_ext_endpoint_ip: "192.168.10.41"
+traefik_int_endpoint_ip: "172.16.25.40"
+traefik_ext_endpoint_ip: "172.16.25.41"
 
 #set this in your local DNS server (ie. Pihole, or pfsense, etc.) pointing to the IP from the line just above.
-traefik_int_dash_dns_name: "traefik.yourdomain.lan"
-traefik_ext_dash_dns_name: "traefik-ext.yourdomain.lan"
+traefik_int_dash_dns_name: "traefik.cloud.devandshell.com"
+traefik_ext_dash_dns_name: "traefik-ext.cloud.devandshell.com"
 
 #number of traefik pods you want running
 traefik_replicas: 1
@@ -123,7 +124,7 @@ deploy_rancher: true
 rancher_replicas: 1
 
 #rancher dns name
-rancher_dns_name: "rancher.yourdomain.lan"
+rancher_dns_name: "rancher.cloud.devandshell.com"
 
 #version of cert-manager to deploy
 cert_manager_ver: "v1.13.2"
